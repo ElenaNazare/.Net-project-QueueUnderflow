@@ -1,0 +1,2 @@
+# .Net project QueueUnderflow
+ QueueUnderflow is a discussion platform with tailored features for unregistered visitors, registered users, and admins. Visitors view public pages, while registered users can create profiles, start discussions, and manage posts. Topics are categorized with search and sorting tools. Admins oversee content, manage categories, and control user permissions, ensuring quality and organization. Similar to Stack Overflow, it supports organized Q&A with robust user and admin functionalities.
