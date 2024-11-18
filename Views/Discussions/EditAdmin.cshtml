@@ -1,0 +1,50 @@
+﻿@model QueueUnderflow.Models.Discussion
+
+
+
+
+<h2 class="text-center mt-5">Edit discussion</h2>
+<br />
+<div class="container mt-5">
+    <div class="row">
+        @{
+            string timeAgo = @Model.Date.ToString("MMMM dd, yyyy");
+        }
+
+
+        <div class="card-body article-card">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <div class="card-text">@Html.Raw(Model.Content)</div>
+                <div class="text-end">
+                    <small>started @timeAgo</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 offset-3">
+            @using (Html.BeginForm(actionName: "EditAdmin", controllerName: "Discussions",
+            method: FormMethod.Post,
+            routeValues: new { id = Model.Id }))
+            {
+                /* @Html.HiddenFor(m => m.Id)  */
+
+                <input type="hidden" name="Title" value=@Model.Title />
+
+                <input type="hidden" name="Content" value=@Model.Content />
+
+                <label>Select the category</label>
+                @Html.DropDownListFor(m => m.CategoryId,
+                         new SelectList(Model.Categ, "Value", "Text"),
+                         "Select the category", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CategoryId, null, new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                <button class="btn btn-sm btn-success" type="submit">Modify discussion</button>
+
+            }
+        </div>
+    </div>
+</div>
